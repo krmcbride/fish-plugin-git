@@ -19,6 +19,8 @@ function __git.init
   __git.create_abbr g          git
   __git.create_abbr ga         git add
   __git.create_abbr gaa        git add --all
+  # km: additional git add --all
+  __git.create_abbr gall       git add --all
   __git.create_abbr gau        git add --update
   __git.create_abbr gapa       git add --patch
   __git.create_abbr gap        git apply
@@ -39,6 +41,8 @@ function __git.init
   __git.create_abbr gcn!       git commit -v --no-edit --amend
   __git.create_abbr gca        git commit -v -a
   __git.create_abbr gca!       git commit -v -a --amend
+  # km: adding a quick git commit all amend
+  __git.create_abbr gcaa       git commit -v -a --amend -C HEAD
   __git.create_abbr gcan!      git commit -v -a --no-edit --amend
   __git.create_abbr gcv        git commit -v --no-verify
   __git.create_abbr gcav       git commit -a -v --no-verify
@@ -71,10 +75,12 @@ function __git.init
   __git.create_abbr gfa        git fetch --all --prune
   __git.create_abbr gfm        "git fetch origin (__git.default_branch) --prune; and git merge FETCH_HEAD"
   __git.create_abbr gfo        git fetch origin
-  __git.create_abbr gl         git pull
-  __git.create_abbr ggl        git pull origin \(__git.current_branch\)
-  __git.create_abbr gll        git pull origin
-  __git.create_abbr glr        git pull --rebase
+  # km: switched from git pull to git log
+  __git.create_abbr gl         git log -10
+  # km: using ggpull and gpull instead of ggl and gll
+  __git.create_abbr ggpull     git pull origin \(__git.current_branch\)
+  __git.create_abbr gpull      git pull origin
+  # __git.create_abbr glr        git pull --rebase
   __git.create_abbr glg        git log --stat
   __git.create_abbr glgg       git log --graph
   __git.create_abbr glgga      git log --graph --decorate --all
@@ -93,8 +99,9 @@ function __git.init
   __git.create_abbr gpo!       git push --force-with-lease origin
   __git.create_abbr gpv        git push --no-verify
   __git.create_abbr gpv!       git push --no-verify --force-with-lease
-  __git.create_abbr ggp        git push origin \(__git.current_branch\)
-  __git.create_abbr ggp!       git push origin \(__git.current_branch\) --force-with-lease
+  # km: using ggpush instead of ggp
+  __git.create_abbr ggpush     git push origin \(__git.current_branch\)
+  __git.create_abbr ggpush!    git push origin \(__git.current_branch\) --force-with-lease
   __git.create_abbr gpu        git push origin \(__git.current_branch\) --set-upstream
   __git.create_abbr gpoat      "git push origin --all; and git push origin --tags"
   __git.create_abbr ggpnp      "git pull origin (__git.current_branch); and git push origin (__git.current_branch)"
@@ -134,6 +141,8 @@ function __git.init
   __git.create_abbr gsd        git svn dcommit
   __git.create_abbr gsr        git svn rebase
   __git.create_abbr gsb        git status -sb
+  # km: using this as the default git status
+  __git.create_abbr gs         git status -sb
   __git.create_abbr gss        git status -s
   __git.create_abbr gst        git status
   __git.create_abbr gsta       git stash
